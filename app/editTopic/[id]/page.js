@@ -2,8 +2,11 @@ import EditTopicForm from '@/components/EditTopicForm';
 import React from 'react'
 
 const getTopicById=async(id)=>{
+
+  const baseUrl = process.env.API_URL;
+
   try {
-    const res=await fetch(`http://localhost:3000/api/topics/${id}`,{
+    const res=await fetch(`${baseUrl}/api/topics/${id}`,{
       cache:"no-store"
     });
     if(!res.ok){

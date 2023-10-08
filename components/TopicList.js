@@ -3,8 +3,9 @@ import Link from "next/link"
 import {HiPencilAlt} from "react-icons/hi"
 
 const getTopics = async()=>{
+    const baseUrl = process.env.API_URL;
 try {
-    const res=await fetch('http://localhost:3000/api/topics',{cache:"no-store"});
+    const res=await fetch(`${baseUrl}/api/topics`,{cache:"no-store"});
     if(!res.ok){
         throw new Error("Failed to fetch topics");
     }
@@ -19,7 +20,7 @@ const TopicList = async() => {
   return (
     <>
     {topics.map((curntElem)=>(
-        <div key={curntElem._id} className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start">
+        <div key={curntElem._id} className="p-4 border border-slate-300 my-3 flex justify-between gap-5 items-start duration-1000 hover:bg-slate-300">
             <div>
                 <h2 className="font-bold text-2xl">{curntElem.title}</h2>
                 <div>{curntElem.description}</div>
